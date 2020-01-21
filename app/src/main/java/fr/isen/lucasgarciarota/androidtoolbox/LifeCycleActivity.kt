@@ -15,9 +15,21 @@ class LifeCycleActivity : AppCompatActivity() {
         notification("onCreate",true)
 
         val newFragment = LifeCycleFragment()
+        val newFragment2 = LifeCycleFragment2()
         val transaction = supportFragmentManager.beginTransaction()
         transaction.add(R.id.LifeCycleActivityLayout, newFragment)
         transaction.commit()
+
+        buttonFragment.setOnClickListener {
+            if(newFragment.isResumed){
+                Log.d("TAG","Fragment 1 is resumed")
+                supportFragmentManager.beginTransaction().replace(R.id.LifeCycleActivityLayout, newFragment2).commit()
+            }
+            else{
+                Log.d("TAG","Fragment 2 is resumed")
+                supportFragmentManager.beginTransaction().replace(R.id.LifeCycleActivityLayout, newFragment).commit()
+            }
+        }
     }
 
 
