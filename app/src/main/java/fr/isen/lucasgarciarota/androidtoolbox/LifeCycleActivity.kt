@@ -13,7 +13,13 @@ class LifeCycleActivity : AppCompatActivity() {
         setContentView(R.layout.activity_life_cycle)
 
         notification("onCreate",true)
+
+        val newFragment = LifeCycleFragment()
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.add(R.id.LifeCycleActivityLayout, newFragment)
+        transaction.commit()
     }
+
 
     private fun notification(message: String, isActive: Boolean){
         if(isActive)
