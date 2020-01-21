@@ -17,7 +17,7 @@ class HomeActivity : AppCompatActivity() {
         deconnexionButton.setOnClickListener {
             var editor = sharedPreferences.edit()
             editor.putString("Login", " ")
-            editor.commit()
+            editor.apply()
 
             var intent = Intent(this, LoginsActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -31,6 +31,16 @@ class HomeActivity : AppCompatActivity() {
 
         lifeCycle.setOnClickListener {
             val changePage = Intent(this, LifeCycleActivity::class.java)
+            startActivity(changePage)
+        }
+
+        saveImage.setOnClickListener {
+            val changePage = Intent(this, FormActivity::class.java)
+            startActivity(changePage)
+        }
+
+        saveText.setOnClickListener {
+            val changePage = Intent(this, FormActivity::class.java)
             startActivity(changePage)
         }
     }
