@@ -8,6 +8,7 @@ android {
     compileSdkVersion 28
     buildToolsVersion "29.0.2"
     defaultConfig {
+        vectorDrawables.useSupportLibrary = true
         applicationId "fr.isen.lucasgarciarota.androidtoolbox"
         minSdkVersion 14
         targetSdkVersion 28
