@@ -12,12 +12,12 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         imageView3.setOnClickListener {
-            val changePage = Intent(this, LifeCycle::class.java)
+            val changePage = Intent(this, LifeCycleActivity::class.java)
             startActivity(changePage)
         }
 
         lifeCycle.setOnClickListener {
-            val changePage = Intent(this, LifeCycle::class.java)
+            val changePage = Intent(this, LifeCycleActivity::class.java)
             startActivity(changePage)
         }
     }
