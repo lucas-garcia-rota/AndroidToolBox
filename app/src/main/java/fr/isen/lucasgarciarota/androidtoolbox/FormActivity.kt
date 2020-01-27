@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
 import android.widget.TextView
 import android.widget.Toast
 import com.google.gson.Gson
@@ -13,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_form.*
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 
 class FormActivity : AppCompatActivity() {
@@ -55,7 +57,9 @@ class FormActivity : AppCompatActivity() {
             user.birthDate = dateText.text.toString()
 
             json = gson.toJson(user)
-            Toast.makeText(this, "Informations enregistrées", Context.MODE_PRIVATE)
+            val toast = Toast.makeText(this, "Informations enregistrées", Toast.LENGTH_LONG)
+            toast.setGravity(Gravity.TOP, 0, 200)
+            toast.show()
 
             nomText.setText("")
             prenomText.setText("")
@@ -70,15 +74,13 @@ class FormActivity : AppCompatActivity() {
             val birthday = SimpleDateFormat("dd.MM.yyyy").parse(user.birthDate).time
             val now  = Calendar.getInstance().timeInMillis
             val diff = now - birthday
+            val jour = TimeUnit.MILLISECONDS.toDays(diff)
 
-            val seconde = diff / 1000
-            val minute = seconde / 60
-            val heure = minute / 24
-            val jour = heure / 365
+            val date = jour / 365
 
             alertDialogBuilder
                 .setTitle("Informations")
-                .setMessage("Nom : " + showJson.name + "\nPrenom : " + showJson.firstname + "\nDate de naissance : " + showJson.birthDate + "\nAge : " + jour)
+                .setMessage("Nom : " + showJson.name + "\nPrenom : " + showJson.firstname + "\nDate de naissance : " + showJson.birthDate + "\nAge : " + date)
 
 
             var alertDialog: AlertDialog = alertDialogBuilder.create()
