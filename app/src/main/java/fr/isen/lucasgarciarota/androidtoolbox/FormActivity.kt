@@ -7,32 +7,37 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import android.widget.Toast
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_form.*
 import java.text.SimpleDateFormat
+import java.time.LocalDate
 import java.util.*
 
 
 class FormActivity : AppCompatActivity() {
 
+    val cal = Calendar.getInstance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_form)
 
-        val formInput: SharedPreferences = getSharedPreferences("FormInfo", Context.MODE_PRIVATE)
+        val gson = Gson()
+        val user: User = User()
+        var json: String = gson.toJson(user)
 
         val textView: TextView = findViewById(R.id.dateText)
         textView.text = SimpleDateFormat("dd.MM.yyyy").format(System.currentTimeMillis())
 
-        var cal = Calendar.getInstance()
 
-        val dateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+        val dateSetListener = DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
             cal.set(Calendar.YEAR, year)
             cal.set(Calendar.MONTH, monthOfYear)
             cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
 
             val myFormat = "dd.MM.yyyy" // mention the format you need
-            val sdf = SimpleDateFormat(myFormat, Locale.US)
+            val sdf = SimpleDateFormat(myFormat, Locale.FRANCE)
             textView.text = sdf.format(cal.time)
 
         }
@@ -45,49 +50,41 @@ class FormActivity : AppCompatActivity() {
         }
 
         submitButton.setOnClickListener {
-            jsonForm(formInput)
+            user.name = nomText.text.toString()
+            user.firstname = prenomText.text.toString()
+            user.birthDate = dateText.text.toString()
+
+            json = gson.toJson(user)
+            Toast.makeText(this, "Informations enregistrées", Context.MODE_PRIVATE)
+
+            nomText.setText("")
+            prenomText.setText("")
+            dateText.setText("")
+
         }
 
         informationsButton.setOnClickListener {
-            popUp(formInput, 21)
-        }
-    }
 
-    fun popUp(formInput: SharedPreferences, age: Int) {
-        var gson: Gson = Gson()
-
-        var json: String = formInput.getString("Profile", "").toString()
-        var user: User
-        if (formInput != null) {
-            user = gson.fromJson(json, User::class.java)
-
-
+            val showJson = gson.fromJson(json, User::class.java)
             var alertDialogBuilder: AlertDialog.Builder = AlertDialog.Builder(this)
+            val birthday = SimpleDateFormat("dd.MM.yyyy").parse(user.birthDate).time
+            val now  = Calendar.getInstance().timeInMillis
+            val diff = now - birthday
+
+            val seconde = diff / 1000
+            val minute = seconde / 60
+            val heure = minute / 24
+            val jour = heure / 365
 
             alertDialogBuilder
                 .setTitle("Informations")
-                .setMessage("Nom :" + user.name + "\nPrenom:" + user.firstname + "\nDate de naissance:" + user.birthDate + "\nAge:21")
+                .setMessage("Nom : " + showJson.name + "\nPrenom : " + showJson.firstname + "\nDate de naissance : " + showJson.birthDate + "\nAge : " + jour)
 
 
             var alertDialog: AlertDialog = alertDialogBuilder.create()
 
             alertDialog.show()
 
-            print(age)
-
         }
-
-    }
-
-    fun jsonForm(formInput: SharedPreferences){
-        var json: Gson = Gson()
-        val user: User = User(this.nomText.text.toString(), this.prenomText.text.toString(), this.dateText.text.toString())
-        val editor: SharedPreferences.Editor = formInput.edit()
-        editor.putString("Personne", json.toJson(user))
-        editor.apply()
-
-        this.nomText.setText("")
-        this.prenomText.setText("")
-        this.dateText.setText("")
     }
 }

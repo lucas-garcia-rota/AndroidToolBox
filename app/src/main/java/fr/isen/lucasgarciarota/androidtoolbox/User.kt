@@ -5,12 +5,12 @@ class User {
     var firstname: String = ""
     var birthDate: String = ""
 
+    constructor()
+
     constructor(name: String, firstname: String, date: String)
     {
         this.name = name
         this.firstname = firstname
-        this.birthDate = birthDate
+        this.birthDate = date
     }
-
-
 }
