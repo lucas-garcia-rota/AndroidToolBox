@@ -43,5 +43,15 @@ class HomeActivity : AppCompatActivity() {
             val changePage = Intent(this, FormActivity::class.java)
             startActivity(changePage)
         }
+
+        permissionImage.setOnClickListener {
+            val changePage = Intent(this, PermissionActivity::class.java)
+            startActivity(changePage)
+        }
+
+        permissionText.setOnClickListener {
+            val changePage = Intent(this, PermissionActivity::class.java)
+            startActivity(changePage)
+        }
     }
 }
