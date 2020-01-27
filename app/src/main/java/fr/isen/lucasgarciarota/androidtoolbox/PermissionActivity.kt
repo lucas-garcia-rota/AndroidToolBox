@@ -58,13 +58,13 @@ class PermissionActivity : AppCompatActivity() {
 
     fun withItems() {
 
-        val items = arrayOf("Camera", "Galerie")
+        val items = arrayOf("Prendre une photo", "Galerie")
         val builder = AlertDialog.Builder(this)
         with(builder)
         {
             setTitle("Choisir : ")
             setItems(items) { _, which ->
-                if(items[which] == "Camera"){
+                if(items[which] == "Prendre une photo"){
                     imageFromCamera()
                 }
                 else{
