@@ -1,5 +1,6 @@
 package fr.isen.lucasgarciarota.androidtoolbox
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
@@ -18,6 +19,8 @@ import android.provider.ContactsContract
 import android.provider.MediaStore
 import android.provider.Settings
 import android.view.View
+import android.widget.LinearLayout
+import android.widget.LinearLayout.VERTICAL
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -27,14 +30,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.location.*
 import kotlinx.android.synthetic.main.activity_permission.*
 
-@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS",
+    "RECEIVER_NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS"
+)
 class PermissionActivity : AppCompatActivity() {
 
     companion object{
         //Permission code
         private const val IMAGE_PICK_REQUEST = 1000
         private const val CAMERA_PICK_REQUEST = 4444
-        private const val CONTACT_PICK_REQUEST = 1001
+        private const val REQUEST_CONTACT = 1001
 
         const val PERMISSION_CODE = 1002
     }
@@ -47,17 +52,42 @@ class PermissionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_permission)
 
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, arrayOf<String>(Manifest.permission.READ_CONTACTS), REQUEST_CONTACT)
+        }
+        else{
+            setContacts()
+        }
+
         val users: ArrayList<String> = ArrayList()
-        recycleView.layoutManager= LinearLayoutManager(this)
-        recycleView.adapter = UsersAdapter(users)
+        contacts_recyclerView.layoutManager= LinearLayoutManager(this)
+        contacts_recyclerView.adapter = UsersAdapter(users)
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         getLastLocation()
-        pickContact()
 
         photoButton.setOnClickListener {
             withItems()
         }
+    }
+
+    @SuppressLint("WrongConstant")
+    private fun setContacts() {
+        val contactsList: ArrayList<Contact> = ArrayList()
+        val cursor = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null)
+
+        while (cursor.moveToNext()){
+            contactsList.add(Contact(cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)),
+                cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))))
+        }
+
+        cursor.close()
+
+        val adapter= ContactsAdapter(contactsList)
+
+        contacts_recyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
+        contacts_recyclerView.adapter = adapter
+
     }
 
     private fun isLocationEnabled(): Boolean {
@@ -78,7 +108,7 @@ class PermissionActivity : AppCompatActivity() {
     private fun requestPermissions() {
         ActivityCompat.requestPermissions(
             this,
-            arrayOf(android.Manifest.permission.ACCESS_COARSE_LOCATION, android.Manifest.permission.ACCESS_FINE_LOCATION),
+            arrayOf(android.Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION),
             PERMISSION_CODE
         )
     }
@@ -93,6 +123,9 @@ class PermissionActivity : AppCompatActivity() {
             if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                 // Granted. Start getting the location information
             }
+        }
+        else if (requestCode == REQUEST_CONTACT){
+            setContacts()
         }
     }
 
@@ -184,18 +217,6 @@ class PermissionActivity : AppCompatActivity() {
     }
 
 
-    private fun pickContact() {
-        val pickContactIntent = Intent(Intent.ACTION_PICK).apply {
-            // Show user only the contacts that include phone numbers.
-            setDataAndType(
-                Uri.parse("content://contacts"),
-                ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE
-            )
-        }
-
-        startActivityForResult(pickContactIntent, CONTACT_PICK_REQUEST)
-    }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_REQUEST){
@@ -206,23 +227,9 @@ class PermissionActivity : AppCompatActivity() {
             val imageBitmap = data?.extras?.get("data") as Bitmap
             photoButton.setImageBitmap(imageBitmap)
         }
-        else if (requestCode == CONTACT_PICK_REQUEST) {
-            // Make sure the request was successful
-            if (resultCode == Activity.RESULT_OK) {
-                val projection: Array<String> =
-                    arrayOf(ContactsContract.CommonDataKinds.Phone.NUMBER)
 
-                // Get the URI that points to the selected contact
-                data?.data.also { contactUri ->
-                    contentResolver.query(contactUri, projection, null, null, null)?.apply {
-                        moveToFirst()
-                        val column: Int =
-                            getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
-                        getString(column)
-
-                    }
-                }
-            }
+        else if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CONTACT){
+            setContacts()
         }
     }
 }

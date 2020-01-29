@@ -35,23 +35,40 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/fr/isen/lucasgarciarota/androidtoolbox/PermissionActivity.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="49" column="49" selection-start-line="49" selection-start-column="49" selection-end-line="49" selection-end-column="49" />
-              <folding>
-                <element signature="e#49#1066#0" expanded="true" />
-              </folding>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_form.xml">
+          <provider selected="true" editor-type-id="android-designer2" />
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="1680">
+              <caret line="112" column="36" selection-start-line="112" selection-start-column="36" selection-end-line="112" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/fr/isen/lucasgarciarota/androidtoolbox/UsersAdapter.kt">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_permission.xml">
+          <provider editor-type-id="android-designer2" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+            <state relative-caret-position="335">
+              <caret line="79" column="42" selection-start-line="79" selection-start-column="42" selection-end-line="79" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/fr/isen/lucasgarciarota/androidtoolbox/Contact.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="62" selection-start-line="2" selection-start-column="62" selection-end-line="2" selection-end-column="62" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/fr/isen/lucasgarciarota/androidtoolbox/ContactsAdapter.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="29" column="54" selection-start-line="29" selection-start-column="54" selection-end-line="29" selection-end-column="54" />
               <folding>
                 <element signature="e#48#186#0" expanded="true" />
               </folding>
@@ -60,21 +77,32 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/user_row.xml">
-          <provider editor-type-id="android-designer2" />
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/fr/isen/lucasgarciarota/androidtoolbox/UsersAdapter.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
+            <state relative-caret-position="225">
+              <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_permission.xml">
-          <provider selected="true" editor-type-id="android-designer2" />
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="66" selection-start-line="66" selection-end-line="66" />
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/contact_view.xml">
+          <provider editor-type-id="android-designer2" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="45" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/fr/isen/lucasgarciarota/androidtoolbox/PermissionActivity.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1113">
+              <caret line="219" column="4" lean-forward="true" selection-start-line="219" selection-start-column="4" selection-end-line="219" selection-end-column="4" />
+              <folding>
+                <element signature="e#48#1005#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -89,14 +117,24 @@
           <provider editor-type-id="android-manifest" />
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/user_row.xml">
+          <provider editor-type-id="android-designer2" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Class" />
-        <option value="Kotlin File" />
         <option value="layoutResourceFile_vertical" />
+        <option value="Kotlin File" />
       </list>
     </option>
   </component>
@@ -138,10 +176,13 @@
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$USER_HOME$/.gradle/gradle.properties" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_permission.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/fr/isen/lucasgarciarota/androidtoolbox/UserAdapter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/user_row.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/fr/isen/lucasgarciarota/androidtoolbox/UsersAdapter.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_permission.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/fr/isen/lucasgarciarota/androidtoolbox/Contact.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/contact_view.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/fr/isen/lucasgarciarota/androidtoolbox/ContactsAdapter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/fr/isen/lucasgarciarota/androidtoolbox/PermissionActivity.kt" />
       </list>
     </option>
@@ -162,6 +203,11 @@
             <path>
               <item name="AndroidToolBox" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="AndroidToolBox" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="manifests" type="f94875db:AndroidManifestsGroupNode" />
             </path>
             <path>
               <item name="AndroidToolBox" type="1abcf292:AndroidViewProjectNode" />
@@ -211,7 +257,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Nexus_5X_API_27_x86" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-01-20T09:29:14.283Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-01-29T14:56:47.074Z" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="not.eligible.for.single.variant.sync" value="true" />
@@ -366,14 +412,14 @@
       <window_info id="Designer" order="6" />
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Capture Tool" order="8" />
-      <window_info anchor="bottom" id="Run" order="0" sideWeight="0.49427754" weight="0.32771084" />
+      <window_info anchor="bottom" id="Run" order="0" sideWeight="0.49356222" visible="true" weight="0.32771084" />
       <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.4892704" weight="0.32771084" />
       <window_info anchor="bottom" id="TODO" order="2" sideWeight="0.49570817" weight="0.32891566" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49928468" weight="0.32891566" />
       <window_info anchor="bottom" id="Terminal" order="4" sideWeight="0.49928468" weight="0.32891566" />
-      <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.5114449" side_tool="true" weight="0.24698795" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="5" sideWeight="0.5064378" side_tool="true" visible="true" weight="0.32771084" />
       <window_info anchor="bottom" id="Version Control" order="6" />
-      <window_info active="true" anchor="bottom" id="Build" order="7" sideWeight="0.48855507" visible="true" weight="0.24698795" />
+      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.48855507" weight="0.24698795" />
       <window_info anchor="bottom" id="Android Profiler" order="8" sideWeight="0.49928468" weight="0.32891566" />
       <window_info anchor="bottom" id="Find" order="9" weight="0.32891566" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
@@ -490,14 +536,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_form.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="640">
-          <caret line="112" column="36" selection-start-line="112" selection-start-column="36" selection-end-line="112" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
@@ -541,14 +579,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="68" selection-start-line="11" selection-start-column="68" selection-end-line="11" selection-end-column="68" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/fr/isen/lucasgarciarota/androidtoolbox/LifeCycleActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -581,14 +611,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_permission.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="66" selection-start-line="66" selection-end-line="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/fr/isen/lucasgarciarota/androidtoolbox/UserAdapter.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -599,6 +621,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="68" selection-start-line="11" selection-start-column="68" selection-end-line="11" selection-end-column="68" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/user_row.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
@@ -607,22 +637,60 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_form.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="1680">
+          <caret line="112" column="36" selection-start-line="112" selection-start-column="36" selection-end-line="112" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/fr/isen/lucasgarciarota/androidtoolbox/Contact.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="62" selection-start-line="2" selection-start-column="62" selection-end-line="2" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/fr/isen/lucasgarciarota/androidtoolbox/UsersAdapter.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
+        <state relative-caret-position="225">
           <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/contact_view.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="45" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/fr/isen/lucasgarciarota/androidtoolbox/ContactsAdapter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="54" selection-start-line="29" selection-start-column="54" selection-end-line="29" selection-end-column="54" />
           <folding>
             <element signature="e#48#186#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_permission.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="79" column="42" selection-start-line="79" selection-start-column="42" selection-end-line="79" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/fr/isen/lucasgarciarota/androidtoolbox/PermissionActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="49" column="49" selection-start-line="49" selection-start-column="49" selection-end-line="49" selection-end-column="49" />
+        <state relative-caret-position="1113">
+          <caret line="219" column="4" lean-forward="true" selection-start-line="219" selection-start-column="4" selection-end-line="219" selection-end-column="4" />
           <folding>
-            <element signature="e#49#1066#0" expanded="true" />
+            <element signature="e#48#1005#0" expanded="true" />
           </folding>
         </state>
       </provider>
