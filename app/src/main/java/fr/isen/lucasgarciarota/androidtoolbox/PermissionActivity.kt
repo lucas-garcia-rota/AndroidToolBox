@@ -1,6 +1,5 @@
 package fr.isen.lucasgarciarota.androidtoolbox
 
-
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
@@ -8,28 +7,27 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.database.Cursor
 import android.graphics.Bitmap
 import android.location.Location
-import android.location.LocationListener
 import android.location.LocationManager
-import android.location.LocationManager.NETWORK_PROVIDER
-import android.location.LocationProvider
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.os.Looper
 import android.provider.ContactsContract
 import android.provider.MediaStore
 import android.provider.Settings
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.location.*
 import kotlinx.android.synthetic.main.activity_permission.*
-import java.io.Serializable
-import java.util.jar.Manifest
 
+@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class PermissionActivity : AppCompatActivity() {
 
     companion object{
@@ -43,12 +41,19 @@ class PermissionActivity : AppCompatActivity() {
 
     lateinit var mFusedLocationClient: FusedLocationProviderClient
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_permission)
 
+        val users: ArrayList<String> = ArrayList()
+        recycleView.layoutManager= LinearLayoutManager(this)
+        recycleView.adapter = UsersAdapter(users)
+
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         getLastLocation()
+        pickContact()
 
         photoButton.setOnClickListener {
             withItems()
