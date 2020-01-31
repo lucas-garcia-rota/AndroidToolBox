@@ -2,8 +2,6 @@ package fr.isen.lucasgarciarota.androidtoolbox
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
-import android.content.Context
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
@@ -12,7 +10,6 @@ import android.widget.Toast
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_form.*
 import java.text.SimpleDateFormat
-import java.time.LocalDate
 import java.util.*
 import java.util.concurrent.TimeUnit
 

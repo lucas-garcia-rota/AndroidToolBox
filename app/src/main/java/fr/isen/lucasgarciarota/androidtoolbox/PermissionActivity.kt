@@ -37,11 +37,9 @@ class PermissionActivity : AppCompatActivity() {
 
     companion object{
         //Permission code
-        private const val IMAGE_PICK_REQUEST = 1000
-        private const val CAMERA_PICK_REQUEST = 4444
-        private const val REQUEST_CONTACT = 1001
-
-        const val PERMISSION_CODE = 1002
+        private const val IMAGE_PICK_REQUEST = 1
+        private const val CAMERA_PICK_REQUEST = 2
+        private const val REQUEST_CONTACT = 3
     }
 
     lateinit var mFusedLocationClient: FusedLocationProviderClient
@@ -52,42 +50,12 @@ class PermissionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_permission)
 
-        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this, arrayOf<String>(Manifest.permission.READ_CONTACTS), REQUEST_CONTACT)
-        }
-        else{
-            setContacts()
-        }
-
-        val users: ArrayList<String> = ArrayList()
-        contacts_recyclerView.layoutManager= LinearLayoutManager(this)
-        contacts_recyclerView.adapter = UsersAdapter(users)
-
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         getLastLocation()
 
         photoButton.setOnClickListener {
             withItems()
         }
-    }
-
-    @SuppressLint("WrongConstant")
-    private fun setContacts() {
-        val contactsList: ArrayList<Contact> = ArrayList()
-        val cursor = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null)
-
-        while (cursor.moveToNext()){
-            contactsList.add(Contact(cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)),
-                cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))))
-        }
-
-        cursor.close()
-
-        val adapter= ContactsAdapter(contactsList)
-
-        contacts_recyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
-        contacts_recyclerView.adapter = adapter
-
     }
 
     private fun isLocationEnabled(): Boolean {
@@ -105,34 +73,12 @@ class PermissionActivity : AppCompatActivity() {
         return false
     }
 
-    private fun requestPermissions() {
-        ActivityCompat.requestPermissions(
-            this,
-            arrayOf(android.Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION),
-            PERMISSION_CODE
-        )
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == PERMISSION_CODE) {
-            if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                // Granted. Start getting the location information
-            }
-        }
-        else if (requestCode == REQUEST_CONTACT){
-            setContacts()
-        }
-    }
-
     @SuppressLint("MissingPermission")
     private fun getLastLocation() {
-        if (checkPermissions()) {
-            if (isLocationEnabled()) {
+        if (checkPermissions())
+        {
+            if (isLocationEnabled())
+            {
 
                 mFusedLocationClient.lastLocation.addOnCompleteListener(this) { task ->
                     var location: Location? = task.result
@@ -143,13 +89,13 @@ class PermissionActivity : AppCompatActivity() {
                         findViewById<TextView>(R.id.longi).text = location.longitude.toString()
                     }
                 }
-            } else {
+            }
+            else
+            {
                 Toast.makeText(this, "Turn on location", Toast.LENGTH_LONG).show()
                 val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
                 startActivity(intent)
             }
-        } else {
-            requestPermissions()
         }
     }
 
@@ -226,10 +172,6 @@ class PermissionActivity : AppCompatActivity() {
         else if (resultCode == Activity.RESULT_OK && requestCode == CAMERA_PICK_REQUEST){
             val imageBitmap = data?.extras?.get("data") as Bitmap
             photoButton.setImageBitmap(imageBitmap)
-        }
-
-        else if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CONTACT){
-            setContacts()
         }
     }
 }
