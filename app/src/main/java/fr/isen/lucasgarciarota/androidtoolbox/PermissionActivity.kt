@@ -31,9 +31,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.location.*
 import kotlinx.android.synthetic.main.activity_permission.*
 
-@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS",
-    "RECEIVER_NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS"
-)
 class PermissionActivity : AppCompatActivity() {
 
     companion object{
@@ -51,6 +48,13 @@ class PermissionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_permission)
 
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)
+            != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, arrayOf<String>(Manifest.permission.READ_CONTACTS), REQUEST_CONTACT)
+        }else{
+            setContacts()
+        }
+
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         getLastLocation()
 
@@ -59,7 +63,35 @@ class PermissionActivity : AppCompatActivity() {
         }
     }
 
-    
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        if(requestCode == REQUEST_CONTACT)setContacts()
+    }
+
+    @SuppressLint("WrongConstant")
+    private fun setContacts() {
+
+        val contactsList: ArrayList<Contact> = ArrayList()
+
+        val cursor = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null)
+
+        while(cursor.moveToNext()){
+            contactsList.add(Contact(cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)),
+                cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))))
+        }
+
+        cursor.close()
+
+        val adapter = ContactsAdapter(contactsList)
+
+        contacts_recycler_view.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
+
+        contacts_recycler_view.adapter = adapter
+
+    }
 
     private fun isLocationEnabled(): Boolean {
         var locationManager: LocationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager

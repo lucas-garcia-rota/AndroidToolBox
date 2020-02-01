@@ -77,9 +77,12 @@
         app:layout_constraintTop_toBottomOf="@+id/lat" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/contacts_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="558dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="170dp"
+        android:padding="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/photoButton" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
