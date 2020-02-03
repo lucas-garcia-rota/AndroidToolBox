@@ -8,26 +8,20 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.database.Cursor
 import android.graphics.Bitmap
 import android.location.Location
 import android.location.LocationManager
-import android.net.Uri
 import android.os.Bundle
 import android.os.Looper
 import android.provider.ContactsContract
 import android.provider.MediaStore
 import android.provider.Settings
-import android.view.View
 import android.widget.LinearLayout
-import android.widget.LinearLayout.VERTICAL
-import android.widget.ListAdapter
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.location.*
 import kotlinx.android.synthetic.main.activity_permission.*
 
@@ -39,9 +33,6 @@ class PermissionActivity : AppCompatActivity() {
         private const val CAMERA_PICK_REQUEST = 2
         private const val REQUEST_CONTACT = 3
     }
-
-    lateinit var mFusedLocationClient: FusedLocationProviderClient
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,13 +46,11 @@ class PermissionActivity : AppCompatActivity() {
             setContacts()
         }
 
-        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-        getLastLocation()
-
         photoButton.setOnClickListener {
             withItems()
         }
     }
+
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -93,69 +82,6 @@ class PermissionActivity : AppCompatActivity() {
 
     }
 
-    private fun isLocationEnabled(): Boolean {
-        var locationManager: LocationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(
-            LocationManager.NETWORK_PROVIDER
-        )
-    }
-
-    private fun checkPermissions(): Boolean{
-        if(ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
-            ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
-            return true
-        }
-        return false
-    }
-
-    @SuppressLint("MissingPermission")
-    private fun getLastLocation() {
-        if (checkPermissions())
-        {
-            if (isLocationEnabled())
-            {
-
-                mFusedLocationClient.lastLocation.addOnCompleteListener(this) { task ->
-                    var location: Location? = task.result
-                    if (location == null) {
-                        requestNewLocationData()
-                    } else {
-                        findViewById<TextView>(R.id.lat).text = location.latitude.toString()
-                        findViewById<TextView>(R.id.longi).text = location.longitude.toString()
-                    }
-                }
-            }
-            else
-            {
-                Toast.makeText(this, "Turn on location", Toast.LENGTH_LONG).show()
-                val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
-                startActivity(intent)
-            }
-        }
-    }
-
-    @SuppressLint("MissingPermission")
-    private fun requestNewLocationData() {
-        var mLocationRequest = LocationRequest()
-        mLocationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-        mLocationRequest.interval = 0
-        mLocationRequest.fastestInterval = 0
-        mLocationRequest.numUpdates = 1
-
-        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-        mFusedLocationClient.requestLocationUpdates(
-            mLocationRequest, mLocationCallback,
-            Looper.myLooper()
-        )
-    }
-
-    private val mLocationCallback = object : LocationCallback() {
-        override fun onLocationResult(locationResult: LocationResult) {
-            var mLastLocation: Location = locationResult.lastLocation
-            findViewById<TextView>(R.id.lat).text = mLastLocation.latitude.toString()
-            findViewById<TextView>(R.id.longi).text = mLastLocation.longitude.toString()
-        }
-    }
 
 
     fun imageFromGallery(){

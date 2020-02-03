@@ -76,8 +76,9 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="foregroundImage" value="$USER_HOME$/Desktop/coucou.jpeg" />
-                                      <entry key="outputName" value="ma_tete_grosse" />
+                                      <entry key="foregroundImage" value="$USER_HOME$/Desktop/triste.jpeg" />
+                                      <entry key="foregroundLayerName" value="mapetitetete" />
+                                      <entry key="outputName" value="mapetitetetetriste" />
                                     </map>
                                   </option>
                                 </PersistentState>
