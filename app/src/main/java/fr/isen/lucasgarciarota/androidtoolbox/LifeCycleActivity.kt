@@ -34,8 +34,12 @@ class LifeCycleActivity : AppCompatActivity() {
 
 
     private fun notification(message: String, isActive: Boolean){
-        if(isActive)
+        if(isActive){
             lifeCycleText.text=message
+            Toast.makeText(this, lifeCycleText.text, Toast.LENGTH_LONG).show()
+        }
+
+
         else
             Log.d("TAG", message)
     }
@@ -67,6 +71,6 @@ class LifeCycleActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        Toast.makeText(this, "onDestroy", Toast.LENGTH_LONG)
+        Toast.makeText(this, "onDestroy", Toast.LENGTH_LONG).show()
     }
 }
