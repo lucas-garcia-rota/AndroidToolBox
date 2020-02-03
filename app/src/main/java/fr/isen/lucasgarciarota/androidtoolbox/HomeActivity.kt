@@ -53,5 +53,15 @@ class HomeActivity : AppCompatActivity() {
             val changePage = Intent(this, PermissionActivity::class.java)
             startActivity(changePage)
         }
+
+        imageWeb.setOnClickListener {
+            val changePage = Intent(this, WebServicesActivity::class.java)
+            startActivity(changePage)
+        }
+
+        textWeb.setOnClickListener {
+            val changePage = Intent(this, WebServicesActivity::class.java)
+            startActivity(changePage)
+        }
     }
 }
