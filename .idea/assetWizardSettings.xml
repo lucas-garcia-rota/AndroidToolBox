@@ -66,6 +66,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
+                                                <entry key="scalingPercent" value="88" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -75,8 +76,8 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="foregroundImage" value="$PROJECT_DIR$/../../Projet_reseau/Logo_Cyber_Plan de travail 1@2x.png" />
-                                      <entry key="foregroundLayerName" value="ic_launcher_cyber" />
+                                      <entry key="foregroundImage" value="$USER_HOME$/Desktop/coucou.jpeg" />
+                                      <entry key="outputName" value="ma_tete_grosse" />
                                     </map>
                                   </option>
                                 </PersistentState>
