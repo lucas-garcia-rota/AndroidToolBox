@@ -35,12 +35,25 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <ImageView
+        android:id="@+id/imageWeb"
+        android:layout_width="90dp"
+        android:layout_height="77dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginRight="70dp"
+        android:background="#C32922"
+        android:padding="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/saveText"
+        app:srcCompat="@android:drawable/stat_sys_download" />
+
+    <ImageView
         android:id="@+id/imageView3"
         android:layout_width="90dp"
         android:layout_height="77dp"
         android:layout_marginStart="70dp"
         android:layout_marginLeft="70dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="40dp"
         android:background="#C32922"
         android:padding="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,71 +66,46 @@
         android:id="@+id/saveImage"
         android:layout_width="90dp"
         android:layout_height="77dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="68dp"
-        android:layout_marginRight="68dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginRight="70dp"
         android:background="#C32922"
         android:padding="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:srcCompat="@android:drawable/stat_notify_sdcard" />
 
-    <ImageView
-        android:id="@+id/permissionImage"
-        android:layout_width="90dp"
-        android:layout_height="77dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginLeft="68dp"
-        android:layout_marginTop="5dp"
-        android:background="#C32922"
-        android:padding="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lifeCycle"
-        app:srcCompat="@android:drawable/stat_sys_speakerphone" />
-
-    <ImageView
-        android:id="@+id/imageWeb"
-        android:layout_width="90dp"
-        android:layout_height="77dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="72dp"
-        android:layout_marginRight="72dp"
-        android:background="#C32922"
-        android:padding="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/saveText"
-        app:srcCompat="@android:drawable/stat_sys_download" />
-
-    <TextView
-        android:id="@+id/lifeCycle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="75dp"
-        android:layout_marginLeft="75dp"
-        android:layout_marginTop="10dp"
-        android:text="Cycle de vie"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
     <TextView
         android:id="@+id/saveText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="75dp"
         android:layout_marginRight="75dp"
         android:text="Sauvegarde"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/saveImage" />
 
+    <ImageView
+        android:id="@+id/permissionImage"
+        android:layout_width="90dp"
+        android:layout_height="77dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="15dp"
+        android:background="#C32922"
+        android:padding="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lifeCycle"
+        app:srcCompat="@android:drawable/stat_sys_speakerphone" />
+
     <TextView
         android:id="@+id/permissionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="75dp"
-        android:layout_marginLeft="75dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginLeft="72dp"
+        android:layout_marginTop="5dp"
         android:text="Permissions"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/permissionImage" />
@@ -126,19 +114,31 @@
         android:id="@+id/textWeb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="75dp"
         android:layout_marginRight="75dp"
         android:text="WebServices"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageWeb" />
 
-    <Button
-        android:id="@+id/deconnexionButton"
+    <TextView
+        android:id="@+id/lifeCycle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="156dp"
-        android:layout_marginRight="156dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="5dp"
+        android:text="Cycle de vie"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <Button
+        android:id="@+id/deconnexionButton"
+        android:layout_width="108dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="150dp"
+        android:layout_marginRight="150dp"
         android:layout_marginBottom="60dp"
         android:background="#C32922"
         android:text="Déconnexion"

@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_web_services.*
 
 class WebServicesActivity : AppCompatActivity() {
 
-    private val url = "https://randomuser.me/api/?results=20&inc=gender,name,location,email,picture"
+    private val url = "https://randomuser.me/api/?results=20&inc=name,location,email,picture"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
