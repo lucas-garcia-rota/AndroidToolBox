@@ -1,5 +1,6 @@
 package fr.isen.lucasgarciarota.androidtoolbox
 
+import android.app.AlertDialog
 import android.app.DownloadManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
